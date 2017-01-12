@@ -1,0 +1,22 @@
+FROM centos:7
+
+MAINTAINER Nik Ogura <nik.ogura@gmail.com>
+
+EXPOSE 80
+
+RUN rpm -Uvh --replacepkgs https://packages.chef.io/stable/el/6/chefdk-0.19.6-1.el6.x86_64.rpm
+
+# attributes
+ADD attributes.json /var/chef/attributes.json
+
+# cookbooks
+ADD cookbooks /var/chef/cookbooks
+
+# databags
+ADD data_bags /var/chef/data_bags
+
+#chef
+RUN chef-solo -j /var/chef/attributes.json
+
+# entrypoint into container
+CMD /usr/sbin/httpd -k start -DFOREGROUND

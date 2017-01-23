@@ -1,0 +1,9 @@
+---
+machine:
+  java:
+    version: oraclejdk8
+
+dependencies:
+  pre:
+    - wget $(curl -s "https://circleci.com/api/v1.1/project/github/nikogura/homebrew-formula-plugin/latest/artifacts?branch=master&filter=successful" | grep '"url"' | cut -d' ' -f5 | sed 's/[",]//g' | sed 's/^ *//')
+    - mvn install:install-file -Dfile=homebrew-formula-plugin-1.0.0-RELEASE.jar -DgroupId=com.nikogura -DartifactId=homebrew-formula-plugin -Dversion=1.0.0-RELEASE

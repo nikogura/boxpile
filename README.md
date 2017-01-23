@@ -4,6 +4,8 @@ A means of defining an app in a config file, and running it in docker containers
 
 Builds containers via Chef, and runs linked groups of containers locally.
 
+## Build Status: [![CircleCI](https://circleci.com/gh/nikogura/boxpile.svg?style=svg)](https://circleci.com/gh/nikogura/boxpile)
+
 ## Goal
 
 Take an app running in prod, and model it locally up to the limits of the hardware.

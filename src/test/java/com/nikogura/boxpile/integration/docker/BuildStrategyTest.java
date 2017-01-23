@@ -95,7 +95,7 @@ public class BuildStrategyTest extends AbstractTestNGSpringContextTests {
             String appName = "foo";
 
             String imageName = "centos";
-            String imageTag = "7";
+            String imageTag = "6.8";
             String baseImageName = Functions.dockerAddress(DockerInfo.dockerRegistry(), imageName, imageTag);
 
             app = new Application(appName);

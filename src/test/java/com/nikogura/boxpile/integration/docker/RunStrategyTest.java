@@ -102,7 +102,7 @@ public class RunStrategyTest extends AbstractTestNGSpringContextTests {
             env = new Environment("dev");
 
             String imageName = "centos";
-            String imageTag = "7";
+            String imageTag = "6.8";
             String baseImageName = Functions.dockerAddress(DockerInfo.dockerRegistry(), imageName, imageTag);
 
             artApp = new Application(artAppName);
@@ -167,7 +167,7 @@ public class RunStrategyTest extends AbstractTestNGSpringContextTests {
         try {
             assertTrue(rs.allDepsRunning(artApp, memcached), "All Dependencies for Memcached are running");
 
-            //assertFalse(rs.allDepsRunning(artApp, phoenix), "All Dependencies for Phoenix are NOT Running");
+            //assertFalse(rs.allDepsRunning(artApp, apache), "All Dependencies for Apache are NOT Running");
         } catch (UninitializedComponentException e) {
             e.printStackTrace();
             fail();
@@ -254,18 +254,18 @@ public class RunStrategyTest extends AbstractTestNGSpringContextTests {
 //    @Test
 //    public void testCreateDockerRunCommandDeveloper() {
 //        try {
-//            String containerName = rp.getNameForNewContainer(devApp, devPhoenix);
-//            ShellCommand command = rp.createDockerRunCommand(devApp, devPhoenix, containerName);
+//            String containerName = rp.getNameForNewContainer(devApp, devApache);
+//            ShellCommand command = rp.createDockerRunCommand(devApp, devApache, containerName);
 //
 //            logger.debug("Name: " + containerName);
 //            logger.debug("Run Command: ");
 //            logger.debug(command);
 //
-//            String artifactCommand = "docker run -d -p 47001:47001 --link kvtool:kvtool --link nastool:nastool --link psctool:psctool --link memcached:memcached --name phoenix_1_phoenix phoenix-ncit "; // trailing space is significant
+//            String artifactCommand = "docker run -d -p 8080:8080 --link foo:foo --link bar:bar --link baz:baz --link memcached:memcached --name apache_1_apache apache-it "; // trailing space is significant
 //
 //            String runDir = StringUtils.chomp(System.getProperty("user.dir"));
 //
-//            String developerCommand = "docker run -d -p 47001:47001 -v "+ runDir +"/target/PhoenixHome:/apps/Phoenix/Current/PhoenixHome --link kvtool:kvtool --link nastool:nastool --link psctool:psctool --link memcached:memcached --name phoenix_1_phoenix phoenix-ncit "; // trailing space is significant
+//            String developerCommand = "docker run -d -p 8080:8080 -v "+ runDir +"/target/apache:/apache --link foo:foo --link bar:bar --link baz:baz --link memcached:memcached --name apache_1_apache apache-it "; // trailing space is significant
 //            assertNotEquals(command.toString(), artifactCommand, "Generated Docker Run command does not match artifact command");
 //            assertEquals(command.toString(), developerCommand, "Generated Docker Run command matches developer command");
 //

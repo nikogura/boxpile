@@ -12,4 +12,8 @@ Take an app running in prod, and model it locally up to the limits of the hardwa
 
 ## Status
 
-This is a rewrite of some tools I've written a couple times now.  The basic architecture is sound and works, but I have to finish working out the kinks and tests.  Stay tuned.
+This is a rewrite of some tools I've written a couple times now.  The basic architecture is sound and works, but I have to finish working out the kinks and tests.  
+
+It's really just 'Docker Compose' written in Java, and hooked to Chef.  It was written before docker compose was stable.
+
+Now that docker compose exists, I'd ust that rather than this.
